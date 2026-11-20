@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Create Account | AI Resume Optimizer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+
+height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+background:linear-gradient(135deg,#eef2ff,#dbeafe);
+
+}
+
+.signup-box{
+
+background:white;
+
+width:420px;
+
+padding:40px;
+
+border-radius:20px;
+
+box-shadow:0 15px 40px rgba(0,0,0,.15);
+
+}
+
+.signup-box h2{
+
+text-align:center;
+
+margin-bottom:10px;
+
+}
+
+.signup-box p{
+
+text-align:center;
+
+color:#64748b;
+
+margin-bottom:25px;
+
+}
+
+input{
+
+width:100%;
+
+padding:15px;
+
+margin-top:15px;
+
+border:1px solid #cbd5e1;
+
+border-radius:10px;
+
+font-size:15px;
+
+}
+
+button{
+
+width:100%;
+
+padding:15px;
+
+margin-top:25px;
+
+border:none;
+
+background:#2563eb;
+
+color:white;
+
+font-size:17px;
+
+border-radius:10px;
+
+cursor:pointer;
+
+}
+
+button:hover{
+
+background:#1d4ed8;
+
+}
+
+.bottom{
+
+text-align:center;
+
+margin-top:20px;
+
+}
+
+.bottom a{
+
+text-decoration:none;
+
+color:#2563eb;
+
+font-weight:600;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="signup-box">
+
+<h2>Create Account 🚀</h2>
+
+<p>Create your AI Resume Optimizer account</p>
+
+<input
+type="text"
+id="name"
+placeholder="Full Name">
+
+<input
+type="email"
+id="email"
+placeholder="Email Address">
+
+<input
+type="password"
+id="password"
+placeholder="Create Password">
+
+<button
+onclick="createAccount()">
+
+Create Account
+
+</button>
+
+<div class="bottom">
+
+Already have an account?
+
+<a href="login.html">
+
+Login
+
+</a>
+
+</div>
+
+</div>
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+getAuth,
+createUserWithEmailAndPassword
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+import {
+getFirestore,
+doc,
+setDoc
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+
+apiKey: "AIzaSyBb16xq-5Qgn1UGcMq5oX5TAquGjyL1ewM",
+
+authDomain: "ai-resume-optimizer-5ee82.firebaseapp.com",
+
+projectId: "ai-resume-optimizer-5ee82",
+
+storageBucket: "ai-resume-optimizer-5ee82.firebasestorage.app",
+
+messagingSenderId: "244561832642",
+
+appId: "1:244561832642:web:c5d4fc81d9e282b792295b"
+
+};
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+const db = getFirestore(app);
+
+function createAccount(){
+
+const name = document.getElementById("name").value;
+
+const email = document.getElementById("email").value;
+
+const password = document.getElementById("password").value;
+
+if(!name || !email || !password){
+
+alert("Please fill all fields.");
+
+return;
+
+}
+
+createUserWithEmailAndPassword(auth,email,password)
+
+.then(async(userCredential)=>{
+
+await setDoc(
+
+doc(db,"users",userCredential.user.uid),
+
+{
+
+name:name,
+
+email:email,
+
+createdAt:new Date()
+
+}
+
+);
+
+alert("Account Created Successfully!");
+
+window.location.href="index.html";
+
+})
+
+.catch(error=>{
+
+alert(error.message);
+
+});
+
+}
+
+window.createAccount=createAccount;
+
+</script>
+
+</body>
+
+</html>

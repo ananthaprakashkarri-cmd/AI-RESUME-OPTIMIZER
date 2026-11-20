@@ -1,0 +1,19 @@
+TARUN KOLUSU
+Diploma Computer Engineering Student | Frontend Development
+PROFESSIONAL SUMMARY
+Diploma Computer Engineering student focused on frontend development, with foundational knowledge of HTML,
+CSS, and JavaScript. Interested in creating responsive, user-friendly web interfaces and strengthening practical skills
+through hands-on projects.
+TECHNICAL SKILLS
+Frontend: HTML5, CSS3, JavaScript fundamentals, responsive web design fundamentals
+PROJECTS
+AI Job Application Assistant
+• Worked on a project concept for organizing job listings, resumes, and application records.
+• Designed a PostgreSQL database schema for users, resumes, jobs, and applications.
+• Explored n8n workflows and local language-model tools for automation.
+Frontend Web Interface
+• Frontend project experience can be listed here once the project name, features, and technologies are confirmed.
+• Add a live demo or GitHub repository link if available.
+EDUCATION
+Diploma in Computer Engineering
+A.A.N.M. & V.V.R.S.R. Polytechnic, Gudlavalleru, Andhra Pradesh

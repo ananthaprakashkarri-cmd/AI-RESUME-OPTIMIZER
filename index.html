@@ -1,0 +1,2028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Resume Optimizer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+ .password-container{
+    position:relative;
+    width:100%;
+}
+
+.password-container input{
+    width:100%;
+    padding-right:45px;
+    box-sizing:border-box;
+}
+
+.password-container span{
+    position:absolute;
+    right:15px;
+    top:50%;
+    transform:translateY(-50%);
+    cursor:pointer;
+    user-select:none;
+    font-size:20px;
+}   
+.profile-card{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+background:white;
+
+padding:30px;
+
+border-radius:20px;
+
+margin-bottom:40px;
+
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+.profile-left{
+
+display:flex;
+align-items:center;
+gap:20px;
+
+}
+
+.avatar{
+
+width:70px;
+height:70px;
+
+border-radius:50%;
+
+background:#2563eb;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+color:white;
+
+font-size:28px;
+
+}
+
+.logout-btn{
+
+background:#ef4444;
+
+color:white;
+
+padding:12px 22px;
+
+border:none;
+
+border-radius:10px;
+
+cursor:pointer;
+
+}
+
+.logout-btn:hover{
+
+background:#dc2626;
+
+}
+    .dashboard{
+
+display:none;
+max-width:1200px;
+margin:auto;
+padding:60px 40px;
+
+}
+
+
+.dashboard h2{
+
+font-size:38px;
+color:#1e293b;
+
+}
+
+
+.dashboard p{
+
+margin:20px 0;
+color:#475569;
+
+}
+
+
+.dashboard button{
+
+margin-top:30px;
+background:#2563eb;
+color:white;
+border:none;
+padding:15px 30px;
+border-radius:10px;
+cursor:pointer;
+
+}
+nav a{
+
+position:relative;
+
+}
+
+
+nav a.active::after{
+
+content:"";
+position:absolute;
+
+left:0;
+bottom:-8px;
+
+width:100%;
+height:3px;
+
+background:white;
+
+border-radius:10px;
+
+}
+.feature-page{
+
+display:none;
+padding:60px 40px;
+justify-content:center;
+
+}
+
+
+.feature-box{
+
+max-width:1100px;
+background:white;
+padding:45px;
+border-radius:25px;
+box-shadow:0 15px 40px rgba(0,0,0,.12);
+
+}
+
+
+.feature-box h2{
+
+text-align:center;
+font-size:38px;
+color:#1e293b;
+margin-bottom:20px;
+
+}
+
+
+.feature-box > p{
+
+text-align:center;
+color:#475569;
+margin-bottom:40px;
+
+}
+
+
+.feature-grid{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+
+}
+
+
+.feature-card{
+
+background:#eff6ff;
+padding:25px;
+border-radius:18px;
+transition:.3s;
+
+}
+
+
+.feature-card:hover{
+
+transform:translateY(-8px);
+
+}
+
+
+.feature-card h3{
+
+color:#2563eb;
+margin-bottom:15px;
+
+}
+
+
+.feature-card p{
+
+color:#475569;
+line-height:1.7;
+
+}
+
+
+.feature-box button{
+
+display:block;
+margin:40px auto 0;
+padding:15px 35px;
+background:#2563eb;
+color:white;
+border:none;
+border-radius:10px;
+font-size:16px;
+cursor:pointer;
+
+}
+.about-page{
+
+display:none;
+padding:60px 40px;
+justify-content:center;
+
+}
+
+
+.about-box{
+
+max-width:1000px;
+background:white;
+padding:45px;
+border-radius:25px;
+box-shadow:0 15px 40px rgba(0,0,0,.12);
+
+}
+
+
+.about-box h2{
+
+font-size:36px;
+color:#1e293b;
+margin-bottom:25px;
+text-align:center;
+
+}
+
+
+.about-box p{
+
+color:#475569;
+line-height:1.8;
+margin-bottom:20px;
+
+}
+
+
+.about-grid{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+margin-top:30px;
+
+}
+
+
+.about-grid div{
+
+background:#eff6ff;
+padding:25px;
+border-radius:15px;
+
+}
+
+
+.about-grid h3{
+
+color:#2563eb;
+margin-bottom:15px;
+
+}
+
+
+.about-box button{
+
+display:block;
+margin:40px auto 0;
+padding:14px 35px;
+background:#2563eb;
+color:white;
+border:none;
+border-radius:10px;
+font-size:16px;
+cursor:pointer;
+
+}
+.contact-page{
+
+display:none;
+min-height:80vh;
+justify-content:center;
+align-items:center;
+padding:40px;
+
+}
+
+
+.contact-box{
+
+background:white;
+width:450px;
+padding:40px;
+border-radius:20px;
+box-shadow:0 15px 40px rgba(0,0,0,.15);
+text-align:center;
+
+}
+
+
+.contact-box h2{
+
+color:#1e293b;
+font-size:32px;
+
+}
+
+
+.contact-box p{
+
+color:#475569;
+margin:15px 0;
+
+}
+
+
+.contact-info{
+
+margin-top:30px;
+text-align:left;
+
+}
+
+
+.contact-info h3{
+
+color:#2563eb;
+margin-top:20px;
+
+}
+
+
+.contact-box button{
+
+margin-top:30px;
+padding:14px 35px;
+background:#2563eb;
+color:white;
+border:none;
+border-radius:10px;
+font-size:16px;
+cursor:pointer;
+
+}
+.create-btn{
+
+margin-top:10px;
+width:100%;
+padding:14px;
+background:white;
+color:#2563eb;
+border:2px solid #2563eb;
+border-radius:10px;
+font-size:16px;
+cursor:pointer;
+
+}
+
+
+.create-btn:hover{
+
+background:#eff6ff;
+
+}
+.signin-page{
+
+display:none;
+height:80vh;
+justify-content:center;
+align-items:center;
+
+}
+
+
+.signin-box{
+
+background:white;
+width:400px;
+padding:40px;
+border-radius:20px;
+box-shadow:0 15px 40px rgba(0,0,0,.15);
+text-align:center;
+
+}
+
+
+.signin-box h2{
+
+color:#1e293b;
+
+}
+
+
+.signin-box p{
+
+color:#64748b;
+margin:10px;
+
+}
+
+
+.signin-box input{
+
+width:100%;
+padding:14px;
+margin-top:18px;
+border-radius:10px;
+border:1px solid #cbd5e1;
+font-size:15px;
+
+}
+
+
+.options{
+
+display:flex;
+justify-content:space-between;
+font-size:13px;
+margin-top:15px;
+
+}
+
+
+.options a{
+
+text-decoration:none;
+color:#2563eb;
+
+}
+
+
+.signin-box button{
+
+margin-top:25px;
+width:100%;
+padding:15px;
+background:#2563eb;
+color:white;
+border:none;
+border-radius:10px;
+font-size:17px;
+cursor:pointer;
+
+}
+
+
+.google{
+
+margin-top:20px;
+border:1px solid #cbd5e1;
+padding:13px;
+border-radius:10px;
+cursor:pointer;
+
+}
+
+
+.signup span{
+
+color:#2563eb;
+cursor:pointer;
+
+}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#eef2ff,#dbeafe);
+    min-height:100vh;
+}
+
+header{
+    background:#2563eb;
+    color:white;
+    padding:18px 60px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+header h1{
+    font-size:28px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:25px;
+    font-weight:500;
+}
+
+.hero{
+
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+    gap:60px;
+    padding:70px 40px;
+}
+
+.left h2{
+
+    font-size:52px;
+    line-height:1.2;
+    color:#1e293b;
+}
+
+.left p{
+
+    margin-top:25px;
+    color:#475569;
+    font-size:18px;
+    line-height:1.7;
+}
+
+.left button{
+
+    margin-top:35px;
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:15px 35px;
+    border-radius:8px;
+    font-size:18px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.left button:hover{
+
+    background:#1d4ed8;
+}
+
+.card{
+
+    background:white;
+    border-radius:20px;
+    padding:30px;
+    box-shadow:0 15px 40px rgba(0,0,0,.12);
+}
+
+.card h3{
+
+    margin-bottom:25px;
+    color:#1e293b;
+}
+
+.upload{
+
+    border:2px dashed #3b82f6;
+    padding:40px;
+    border-radius:15px;
+    text-align:center;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.upload:hover{
+
+    background:#eff6ff;
+}
+
+.upload input{
+
+    display:none;
+}
+
+textarea{
+
+    width:100%;
+    margin-top:25px;
+    height:170px;
+    border:1px solid #cbd5e1;
+    border-radius:10px;
+    padding:15px;
+    resize:none;
+    font-size:15px;
+}
+
+.analyze{
+
+    width:100%;
+    margin-top:25px;
+    padding:16px;
+    background:#2563eb;
+    color:white;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+    cursor:pointer;
+}
+
+.analyze:hover{
+
+    background:#1d4ed8;
+}
+
+.features{
+
+    max-width:1200px;
+    margin:auto;
+    padding:40px;
+}
+
+.features h2{
+
+    text-align:center;
+    font-size:38px;
+    margin-bottom:50px;
+    color:#1e293b;
+}
+
+.grid{
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.box{
+
+    background:white;
+    padding:30px;
+    border-radius:18px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.box:hover{
+
+    transform:translateY(-8px);
+}
+
+.box h3{
+
+    margin-bottom:15px;
+    color:#2563eb;
+}
+
+.box p{
+
+    color:#475569;
+    line-height:1.7;
+}
+
+footer{
+
+    margin-top:70px;
+    background:#1e293b;
+    color:white;
+    text-align:center;
+    padding:30px;
+}
+
+@media(max-width:900px){
+
+.hero{
+
+grid-template-columns:1fr;
+
+}
+
+.left{
+
+text-align:center;
+
+}
+
+}
+
+</style>
+
+</head>
+<body>
+
+<header>
+
+<h1>AI Resume Optimizer</h1>
+
+<nav>
+
+<a href="#" id="homeNav" onclick="goHome()" class="active">
+Home
+</a>
+
+<a href="#" id="featureNav" onclick="openFeatures()">
+Features
+</a>
+
+<a href="#" id="aboutNav" onclick="openAbout()">
+About
+</a>
+
+<a href="#" id="contactNav" onclick="openContact()">
+Contact
+</a>
+
+<a 
+href="#" 
+id="signinNav"
+onclick="openSignIn()" 
+class="signin-btn">
+
+Sign In
+
+</a>
+
+</nav>
+
+</header>
+
+<section class="hero">
+
+<div class="left">
+
+<h2>Build the Perfect Resume for Every Job</h2>
+
+<p>
+
+Upload your resume, paste the job description, and let AI create an ATS-friendly, job-specific resume in seconds.
+
+</p>
+
+<button onclick="openSignIn()">Get Started</button>
+
+</div>
+
+<div class="card">
+
+<h3>Analyze Your Resume</h3>
+
+<label class="upload" id="uploadBox">
+
+    <span id="uploadText">
+        📄 Click to Upload Resume
+    </span>
+
+    <input
+        type="file"
+        id="resumeFile"
+        accept=".pdf,.doc,.docx">
+
+</label>
+
+<div id="fileActions" style="display:none; margin-top:15px;">
+
+    <button id="previewBtn">👁 Preview</button>
+
+    <button id="removeBtn">🗑 Remove</button>
+
+</div>
+
+<textarea placeholder="Paste Job Description Here..."></textarea>
+
+<button class="analyze">
+
+Analyze Resume
+
+</button>
+
+</div>
+
+</section>
+
+<section class="features">
+
+<h2>Why Choose Our AI?</h2>
+
+<div class="grid">
+
+<div class="box">
+
+<h3>📈 ATS Score</h3>
+
+<p>
+
+Instantly know how well your resume matches the job description.
+
+</p>
+
+</div>
+
+<div class="box">
+
+<h3>🎯 Keyword Matching</h3>
+
+<p>
+
+Find missing keywords and skills required by recruiters.
+
+</p>
+
+</div>
+
+<div class="box">
+
+<h3>✨ AI Resume Rewrite</h3>
+
+<p>
+
+Generate a professional resume tailored to the selected job.
+
+</p>
+
+</div>
+
+<div class="box">
+
+<h3>⬇ Download</h3>
+
+<p>
+
+Download your optimized resume as PDF or DOCX.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="signin-page" id="signinPage">
+
+<div class="signin-box">
+
+<h2>Welcome Back 👋</h2>
+
+<p>Sign in to continue to AI Resume Optimizer</p>
+
+
+<input 
+type="email" 
+placeholder="Email Address"
+id="email">
+
+
+<div class="password-container">
+
+<input
+type="password"
+placeholder="Password"
+id="password">
+
+<span id="toggleLoginPassword">👁️</span>
+
+</div>
+
+
+<div class="options">
+
+<label>
+<input type="checkbox">
+Remember me
+</label>
+
+
+<a href="#">
+Forgot Password?
+</a>
+
+</div>
+
+
+<button onclick="signIn()">
+
+Sign In
+
+</button>
+
+
+
+
+
+<p class="signup">
+
+Don't have an account?
+
+</p>
+
+<button class="create-btn" onclick="openSignup()">
+
+Create Account
+
+</button>
+
+
+</div>
+
+
+</section>
+<section class="signin-page" id="signupPage">
+
+
+<div class="signin-box">
+
+
+<h2>Create Account 🚀</h2>
+
+<p>Start optimizing your resume with AI</p>
+
+
+<input 
+type="text"
+id="newName"
+placeholder="Full Name">
+
+
+<input
+type="email"
+id="newEmail"
+placeholder="Email Address">
+
+<div class="password-container">
+
+<div class="password-container">
+
+<input
+type="password"
+id="newPassword"
+placeholder="Create Password">
+
+<span id="toggleSignupPassword">👁️</span>
+
+</div>
+
+<span id="toggleSignupPassword">👁️</span>
+
+</div>
+
+
+<button onclick="createAccount()">
+
+Sign Up
+
+</button>
+
+
+<p class="signup">
+
+Already have an account?
+
+<span onclick="backLogin()">
+
+Login
+
+</span>
+
+</p>
+
+
+</div>
+
+
+</section>
+<section class="contact-page" id="contactPage">
+
+
+<div class="contact-box">
+
+
+<h2>Contact Us 📞</h2>
+
+<p>
+Have questions about AI Resume Optimizer?
+Reach out anytime.
+</p>
+
+
+<div class="contact-info">
+
+<h3>Email</h3>
+
+<p>
+📧 kolusutarun9@gmail.com
+</p>
+
+
+<h3>Phone</h3>
+
+<p>
+📱 9493700449
+</p>
+
+
+<h3>Location</h3>
+
+<p>
+📍 Andhra Pradesh, India
+</p>
+
+
+</div>
+
+
+<button onclick="backHome()">
+
+Back Home
+
+</button>
+
+
+</div>
+
+
+</section>
+<section class="about-page" id="aboutPage">
+
+
+<div class="about-box">
+
+
+<h2>About AI Resume Optimizer 🤖</h2>
+
+
+<p>
+AI Resume Optimizer is an intelligent resume enhancement platform
+designed to help students and job seekers create better resumes
+based on specific job requirements.
+</p>
+
+
+<p>
+Our system analyzes your resume, compares it with job descriptions,
+finds missing skills, calculates ATS compatibility, and generates
+an improved resume with the power of Artificial Intelligence.
+</p>
+
+
+
+<div class="about-grid">
+
+
+<div>
+
+<h3>🎯 Our Goal</h3>
+
+<p>
+To make job applications smarter by helping candidates customize
+their resumes for every opportunity.
+</p>
+
+</div>
+
+
+
+<div>
+
+<h3>⚡ Features</h3>
+
+<p>
+• ATS Score Analysis<br>
+• Skill Matching<br>
+• AI Resume Rewrite<br>
+• Cover Letter Generation
+</p>
+
+</div>
+
+
+
+<div>
+
+<h3>🛠 Technology</h3>
+
+<p>
+Built using AI automation workflows, n8n, LLM models,
+and modern web technologies.
+</p>
+
+</div>
+
+
+
+<div>
+
+<h3>👨‍💻 Created By</h3>
+
+<p>
+Tarun Kolusu<br>
+Computer Engineering Student<br>
+AI & Automation Enthusiast
+</p>
+
+</div>
+
+
+</div>
+
+
+<button onclick="backFromAbout()">
+
+Back Home
+
+</button>
+
+
+</div>
+
+
+</section>
+<section class="feature-page" id="featurePage">
+
+
+<div class="feature-box">
+
+
+<h2>AI Resume Optimizer Features 🚀</h2>
+
+
+<p>
+Our AI Resume Optimizer helps candidates improve their chances
+of getting selected by creating job-focused resumes using AI.
+</p>
+
+
+
+<div class="feature-grid">
+
+
+<div class="feature-card">
+
+<h3>📈 ATS Resume Score</h3>
+
+<p>
+Analyze how closely your resume matches the job description.
+Get a compatibility score based on skills and requirements.
+</p>
+
+</div>
+
+
+
+<div class="feature-card">
+
+<h3>🎯 Smart Skill Matching</h3>
+
+<p>
+AI compares your resume skills with recruiter requirements
+and identifies matching and missing skills.
+</p>
+
+</div>
+
+
+
+<div class="feature-card">
+
+<h3>🤖 AI Resume Rewrite</h3>
+
+<p>
+Automatically improves resume content while keeping your
+real experience, education, and projects unchanged.
+</p>
+
+</div>
+
+
+
+<div class="feature-card">
+
+<h3>✉ Cover Letter Generator</h3>
+
+<p>
+Creates personalized cover letters based on your resume
+and the selected job role.
+</p>
+
+</div>
+
+
+
+<div class="feature-card">
+
+<h3>📄 Resume Analysis</h3>
+
+<p>
+Extracts information from uploaded PDF resumes and understands
+your technical skills, projects, and background.
+</p>
+
+</div>
+
+
+
+<div class="feature-card">
+
+<h3>⚡ AI Automation</h3>
+
+<p>
+Powered by AI workflows that automate resume checking,
+optimization, and job preparation.
+</p>
+
+</div>
+
+
+
+</div>
+
+
+<button onclick="backFromFeatures()">
+
+Back Home
+
+</button>
+
+
+</div>
+
+
+</section>
+<section class="dashboard" id="dashboardPage">
+
+<div class="profile-card">
+
+<div class="profile-left">
+
+<div class="avatar">
+<i class="fa-solid fa-user"></i>
+</div>
+
+<div>
+
+<h2 id="welcomeName">
+Welcome
+</h2>
+
+<p id="welcomeEmail">
+email@example.com
+</p>
+
+</div>
+
+</div>
+
+<button class="logout-btn">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+Logout
+
+</button>
+
+</div>
+<footer>
+
+© 2026 AI Resume Optimizer | All Rights Reserved
+
+</footer>
+
+
+<script>
+
+const analyzeBtn = document.querySelector(".analyze");
+const fileInput =
+document.getElementById("resumeFile");
+
+const uploadBox =
+document.getElementById("uploadBox");
+
+const previewBtn =
+document.getElementById("previewBtn");
+
+const removeBtn =
+document.getElementById("removeBtn");
+
+const fileActions =
+document.getElementById("fileActions");
+const jobText = document.querySelector("textarea");
+fileInput.addEventListener("change", () => {
+
+    const file = fileInput.files[0];
+
+    if (!file) return;
+
+    uploadBox.innerHTML = `
+        ✅ <strong>${file.name}</strong><br>
+        <small>${(file.size / 1024).toFixed(1)} KB</small>
+    `;
+
+    fileActions.style.display = "block";
+
+});
+
+previewBtn.addEventListener("click", () => {
+
+    const file = fileInput.files[0];
+
+    if (!file) return;
+
+    const url = URL.createObjectURL(file);
+
+    window.open(url);
+
+});
+
+removeBtn.addEventListener("click", () => {
+
+    fileInput.value = "";
+
+    uploadBox.innerHTML = `
+        📄 Click to Upload Resume
+        <input
+            type="file"
+            id="resumeFile"
+            accept=".pdf,.doc,.docx">
+    `;
+
+    location.reload();
+
+});
+
+
+analyzeBtn.addEventListener("click", async () => {
+
+
+    const file = fileInput.files[0];
+    const jobDescription = jobText.value;
+
+
+    if(!file){
+
+        alert("Upload your resume first");
+        return;
+
+    }
+
+
+    if(!jobDescription){
+
+        alert("Paste job description first");
+        return;
+
+    }
+
+
+    const formData = new FormData();
+
+
+    formData.append(
+        "resumeFile",
+        file
+    );
+
+
+    formData.append(
+        "job_description",
+        jobDescription
+    );
+
+
+
+    analyzeBtn.innerText = "AI Analyzing...";
+    analyzeBtn.disabled = true;
+
+
+
+   try {
+    const response = await fetch(
+        "https://app-chef-courses-kelkoo.trycloudflare.com/webhook/resume-bot",
+        {
+            method: "POST",
+            body: formData
+        }
+    );
+
+
+        const data = await response.json();
+
+
+        console.log(data);
+
+
+
+        alert(
+            "Resume Analysis Completed\n\n" +
+            "Status : " + data.status
+        );
+
+
+
+    }
+    catch(error){
+
+
+        console.log(error);
+
+
+        alert(
+            "Failed to connect with AI Resume Bot"
+        );
+
+
+    }
+
+
+
+    analyzeBtn.innerText = "Analyze Resume";
+    analyzeBtn.disabled = false;
+
+
+
+});
+
+
+</script>
+<script>
+function openSignup(){
+
+
+document.getElementById("signinPage").style.display="none";
+
+
+document.getElementById("signupPage").style.display="flex";
+
+
+}
+
+
+
+
+function backLogin(){
+
+
+document.getElementById("signupPage").style.display="none";
+
+
+document.getElementById("signinPage").style.display="flex";
+
+
+}
+
+
+
+
+function createAccount(){
+
+
+let name =
+document.getElementById("newName").value;
+
+
+let email =
+document.getElementById("newEmail").value;
+
+
+let password =
+document.getElementById("newPassword").value;
+
+
+
+if(!name || !email || !password){
+
+
+alert("Fill all details");
+
+
+return;
+
+
+}
+
+
+if(!window.firebaseAuth){
+
+alert("Still connecting to Firebase, try again in a moment");
+
+return;
+
+}
+
+
+createUserWithEmailAndPassword(
+firebaseAuth,
+email,
+password
+)
+
+
+.then(async (userCredential)=>{
+
+
+let user =
+userCredential.user;
+
+
+
+await setDoc(
+
+doc(firebaseDB,"users",user.uid),
+
+{
+
+
+name:name,
+
+
+email:email,
+
+
+createdAt:new Date()
+
+
+}
+
+
+);
+
+
+
+alert("Account Created Successfully");
+
+
+window.location.href = "dashboard.html";
+
+
+})
+
+
+.catch((error)=>{
+
+
+console.log(error);
+
+
+alert(error.message);
+
+
+});
+
+
+}
+function openSignIn(){
+
+
+hideAllPages();
+
+
+document
+.getElementById("signinPage")
+.style.display="flex";
+
+
+setActive("signinNav");
+
+
+}
+
+
+
+function signIn(){
+
+
+let email =
+document.getElementById("email").value;
+
+
+let password =
+document.getElementById("password").value;
+
+
+
+if(!email || !password){
+
+
+alert("Enter email and password");
+
+
+return;
+
+
+}
+
+
+if(!window.firebaseAuth){
+
+alert("Still connecting to Firebase, try again in a moment");
+
+return;
+
+}
+
+
+signInWithEmailAndPassword(
+firebaseAuth,
+email,
+password
+)
+
+.then((userCredential)=>{
+
+    const user = userCredential.user;
+
+    document.getElementById("welcomeName").textContent =
+        `Welcome, ${user.email.split("@")[0]}`;
+
+    document.getElementById("welcomeEmail").textContent =
+        user.email;
+
+    openDashboard();
+
+})
+
+
+}
+
+
+</script>
+<script>
+
+function openContact(){
+
+
+hideAllPages();
+
+
+document.getElementById("contactPage").style.display="flex";
+
+
+setActive("contactNav");
+
+
+}
+
+
+
+function backHome(){
+
+
+document.getElementById("contactPage").style.display="none";
+
+
+document.querySelector(".hero").style.display="grid";
+
+document.querySelector(".features").style.display="block";
+
+
+}
+
+
+</script>
+<script>
+function openAbout(){
+
+
+hideAllPages();
+
+
+document.getElementById("aboutPage").style.display="flex";
+
+
+setActive("aboutNav");
+
+
+}
+
+
+
+
+function backFromAbout(){
+
+
+document.getElementById("aboutPage").style.display="none";
+
+
+document.querySelector(".hero").style.display="grid";
+
+document.querySelector(".features").style.display="block";
+
+
+}
+</script>
+<script>
+function openFeatures(){
+
+
+hideAllPages();
+
+
+document.getElementById("featurePage")
+.style.display="flex";
+
+
+setActive("featureNav");
+
+
+}
+
+
+
+function backFromFeatures(){
+
+
+document.getElementById("featurePage").style.display="none";
+
+
+document.querySelector(".hero").style.display="grid";
+
+
+document.querySelector(".features").style.display="block";
+
+
+
+}
+</script>
+<script>
+
+function setActive(page){
+
+
+let links =
+document.querySelectorAll("nav a");
+
+
+links.forEach(link=>{
+
+link.classList.remove("active");
+
+});
+
+
+
+document
+.getElementById(page)
+.classList.add("active");
+
+
+}
+function hideAllPages(){
+
+
+document.querySelector(".hero").style.display="none";
+
+document.querySelector(".features").style.display="none";
+
+
+document.getElementById("featurePage").style.display="none";
+
+document.getElementById("aboutPage").style.display="none";
+
+document.getElementById("contactPage").style.display="none";
+
+document.getElementById("signinPage").style.display="none";
+
+document.getElementById("signupPage").style.display="none";
+document.getElementById("dashboardPage")
+.style.display="none";
+
+
+
+}
+function goHome(){
+
+
+hideAllPages();
+
+
+document.querySelector(".hero")
+.style.display="grid";
+
+
+document.querySelector(".features")
+.style.display="block";
+
+
+setActive("homeNav");
+}
+function openDashboard(){
+
+
+hideAllPages();
+
+
+document
+.getElementById("dashboardPage")
+.style.display="block";
+
+
+}
+
+</script>
+<script>
+function openDashboard(){
+
+hideAllPages();
+
+document
+.getElementById("dashboardPage")
+.style.display="block";
+
+}
+
+</script>
+
+<!-- ADD THE PASSWORD TOGGLE SCRIPT HERE -->
+
+<script>
+
+const loginPassword =
+document.getElementById("password");
+
+const toggleLoginPassword =
+document.getElementById("toggleLoginPassword");
+
+toggleLoginPassword.addEventListener("click",()=>{
+
+if(loginPassword.type==="password"){
+
+loginPassword.type="text";
+toggleLoginPassword.textContent="🙈";
+
+}else{
+
+loginPassword.type="password";
+toggleLoginPassword.textContent="👁️";
+
+}
+
+});
+
+const signupPassword =
+document.getElementById("newPassword");
+
+const toggleSignupPassword =
+document.getElementById("toggleSignupPassword");
+
+toggleSignupPassword.addEventListener("click",()=>{
+
+if(signupPassword.type==="password"){
+
+signupPassword.type="text";
+toggleSignupPassword.textContent="🙈";
+
+}else{
+
+signupPassword.type="password";
+toggleSignupPassword.textContent="👁️";
+
+}
+
+});
+
+</script>
+
+<!-- FIREBASE SCRIPT -->
+<!-- FIREBASE SCRIPT -->
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+import {
+    getFirestore,
+    doc,
+    setDoc
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+
+const firebaseConfig = {
+    apiKey: "YOUR_FIREBASE_API_KEY",
+    authDomain: "ai-resume-optimizer-5ee82.firebaseapp.com",
+    projectId: "ai-resume-optimizer-5ee82",
+    storageBucket: "ai-resume-optimizer-5ee82.firebasestorage.app",
+    messagingSenderId: "244561832642",
+    appId: "1:561832832642:web:c5d4fc81d9e282b792295b"
+};
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+
+// Make Firebase available to your other scripts
+window.firebaseAuth = auth;
+window.firebaseDB = db;
+
+window.createUserWithEmailAndPassword =
+    createUserWithEmailAndPassword;
+
+window.signInWithEmailAndPassword =
+    signInWithEmailAndPassword;
+
+window.setDoc = setDoc;
+window.doc = doc;
+
+</script>
+
+
+
+import { 
+getAuth,
+createUserWithEmailAndPassword,
+signInWithEmailAndPassword
+} 
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+
+
+const firebaseConfig = {
+
+apiKey: "AIzaSyBb16xq-5Qgn1UGcMq5oX5TAquGjyL1ewM",
+
+authDomain: "ai-resume-optimizer-5ee82.firebaseapp.com",
+
+projectId: "ai-resume-optimizer-5ee82",
+
+storageBucket: "ai-resume-optimizer-5ee82.firebasestorage.app",
+
+messagingSenderId: "244561832642",
+
+appId: "1:244561832642:web:c5d4fc81d9e282b792295b"
+
+};
+
+
+
+
+const app =
+initializeApp(firebaseConfig);
+
+
+const auth =
+getAuth(app);
+
+
+const db =
+getFirestore(app);
+
+
+
+window.firebaseAuth = auth;
+
+
+window.firebaseDB = db;
+
+
+
+window.createUserWithEmailAndPassword =
+createUserWithEmailAndPassword;
+
+
+window.signInWithEmailAndPassword =
+signInWithEmailAndPassword;
+
+
+window.setDoc =
+setDoc;
+
+
+window.doc =
+doc;
+
+
+</script>
+
+
+</body>
+</html>
